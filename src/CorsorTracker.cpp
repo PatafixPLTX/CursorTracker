@@ -112,6 +112,13 @@ int main()
         return 1;
     }
 
+    HMODULE hModule3 = LoadLibraryW(L"./libwinpthread-1.dll");
+    if (hModule3 == NULL)
+    {
+        wcout << "Error: libwinpthread-1.dll not found!" << endl;
+        return 1;
+    }
+
     signal(SIGINT, signalHandler);    
 
     cout << "Program Started!" << endl;
