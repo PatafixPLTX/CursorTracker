@@ -119,6 +119,13 @@ int main()
         return 1;
     }
 
+    HMODULE hModule4 = LoadLibraryW(L"./libgcc_s_dw2-1.dll");
+    if (hModule4 == NULL)
+    {
+        wcout << "Error: libgcc_s_dw2-1.dll not found!" << endl;
+        return 1;
+    }
+
     signal(SIGINT, signalHandler);    
 
     cout << "Program Started!" << endl;
@@ -221,6 +228,8 @@ int main()
 
     FreeLibrary(hModule1);
     FreeLibrary(hModule2);
+    FreeLibrary(hModule3);
+    FreeLibrary(hModule4);
 
     return 0;
 }
