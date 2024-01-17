@@ -98,17 +98,17 @@ void mouseDistanceBetweenCoordinates()
 
 int main()
 {
-    HMODULE hModule = LoadLibrary(L"./DDLs/libgcc_s_seh-1.dll");
-    if (hModule == NULL)
+    HMODULE hModule1 = LoadLibraryW(L"./libgcc_s_seh-1.dll");
+    if (hModule1 == NULL)
     {
-        cout << "Error: libgcc_s_seh-1.dll not found!" << endl;
+        wcout << "Error: libgcc_s_seh-1.dll not found!" << endl;
         return 1;
     }
 
-    hModule = LoadLibrary(L"./DDLs/libstdc++-6.dll");
-    if (hModule == NULL)
+    HMODULE hModule2 = LoadLibraryW(L"./libstdc++-6.dll");
+    if (hModule2 == NULL)
     {
-        cout << "Error: libstdc++-6.dll not found!" << endl;
+        wcout << "Error: libstdc++-6.dll not found!" << endl;
         return 1;
     }
 
@@ -211,6 +211,9 @@ int main()
     fileEnd.close();
 
     cout << "Data saved!" << endl;
+
+    FreeLibrary(hModule1);
+    FreeLibrary(hModule2);
 
     return 0;
 }
